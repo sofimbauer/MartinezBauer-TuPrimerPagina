@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes</title>
+</head>
+<body>
+    <nav>
+        <a href={% url "inicio"%}>Inicio</a>
+        <a href={% url "clientes"%}>Clientes</a> 
+        <a href={% url "registrar_cliente"%}>Registrar cliente</a>
+    </nav>
+    <h2>Listado de los clientes de la empresa: </h2>
+    <ul>
+        {% for cliente in clientes%}
+            {% if cliente.metodo_de_pago|lower == 'efectivo' %}
+                <li style='color: #f55022'>{{cliente}}</li>
+            {% elif cliente.metodo_de_pago|lower == 'tarjeta' %}
+                <li style='color: #f50c5e'>{{cliente}}</li>
+            {% elif cliente.metodo_de_pago|lower == 'cheque'%}
+                <li style='color: #8e05a1'>{{cliente}}</li>
+            {% else %}
+                <li style='color: #0fdbce'>{{cliente}}</li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</body>
+</html>
