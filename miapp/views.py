@@ -4,12 +4,13 @@ from miapp.forms import FormularioCreacionCliente
 
 
 def inicio(request):
-    return render(request, 'inicio.html')
+    # return render(request, 'index.html')
+    return render(request, 'miapp/inicio.html')
 
 
 def clientes(request):
     clientes = Cliente.objects.all()
-    return render(request, 'clientes.html', {'clientes': clientes})
+    return render(request, 'miapp/clientes.html', {'clientes': clientes})
 
 
 def registar_cliente(request):
@@ -29,4 +30,4 @@ def registar_cliente(request):
                               metodo_de_pago=metodo_de_pago)
             cliente.save()
             return redirect('clientes')
-    return render(request, 'registrar_cliente.html', {'formulario': formulario})
+    return render(request, 'miapp/registrar_cliente.html', {'formulario': formulario})
